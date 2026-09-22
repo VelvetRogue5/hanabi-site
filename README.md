@@ -44,9 +44,9 @@ The pages describe the build reviewed on September 22, 2026, with ads being inte
 
 - **No account, local saves** — progress, hints and brooms, unlocked fireworks, tutorials, and settings on device.
   The app creates no identifier of its own.
-- **Advertising** — AppLovin MAX rewarded, interstitial, and banner ads. iOS mediates AppLovin, Google AdMob,
-  Unity Ads, Vungle (Liftoff), DT Exchange, Mintegral, Pangle, BidMachine, and Bigo Ads; Android the same without
-  AdMob and DT Exchange.
+- **Advertising** — AppLovin MAX rewarded, interstitial, and banner ads. Android mediates AppLovin, Google AdMob,
+  Unity Ads, Vungle (Liftoff), Mintegral, Pangle, BidMachine, and Bigo Ads; the iOS list adds DT Exchange, but iOS
+  has no ad units yet, so ads are off there.
 - **Analytics** — Firebase Analytics, automatic events only (no custom gameplay events). No crash reporting.
 - **Remote configuration and levels** — Firebase Remote Config (`cloud_levels_enabled`, `level_pack`,
   firework unlock pacing) and level packs from Google Cloud Storage.
