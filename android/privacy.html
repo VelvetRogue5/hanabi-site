@@ -37,7 +37,7 @@
           analytics and remote configuration, and measures installs so we can understand how the game is found. It has
           no in-app purchases.
         </p>
-        <p class="updated">Last updated: September 22, 2026</p>
+        <p class="updated">Last updated: October 8, 2026</p>
         <div class="platform-switcher" aria-label="Choose a platform privacy policy">
           <span>Platform</span>
           <a href="../privacy.html">iOS</a>
@@ -138,10 +138,33 @@
       <article class="policy-section">
         <h2>Advertising and the Advertising ID</h2>
         <p>
-          Hanabi is free to play and supported by in-app advertising. The app can show rewarded video ads that you
-          choose to watch in exchange for an in-game reward, interstitial ads that appear between nights, and banner
-          ads. Ad placement, frequency, and cooldowns may be controlled by remote configuration and can change without
-          an app update.
+          Hanabi is free to play and supported by in-app advertising. The current Android version includes rewarded
+          video, interstitial, and banner ads through AppLovin MAX. Whether an ad is shown depends on availability,
+          your progress, and the active advertising configuration.
+        </p>
+        <ul class="policy-list">
+          <li>
+            <strong>Rewarded ads.</strong> You can choose to watch an ad to restore your sparks after a failed night,
+            or receive an additional hint or broom when you have run out. Rewards are granted when the advertising
+            SDK reports that the reward was earned. An unavailable, failed, or dismissed rewarded video does not
+            grant the reward.
+          </li>
+          <li>
+            <strong>Interstitial ads.</strong> Full-screen ads may appear when you continue after clearing a night,
+            restart after a failed night, or restart from the pause menu. Eligibility depends on progress, that day's
+            completed nights, and cooldowns; an ad is not shown after every action or every night.
+          </li>
+          <li>
+            <strong>Banner ads.</strong> Banners may appear during gameplay after you reach the configured night.
+            Home-screen banners can also be enabled through remote configuration.
+          </li>
+        </ul>
+        <p>
+          Firebase Remote Config controls advertising switches, eligible nights, frequency, cooldowns, and whether
+          a ready interstitial may substitute for an unavailable rewarded video after you choose to request a reward.
+          This substitution is off by default; if enabled, the reward is granted when the substitute ad closes.
+          These settings may change without an app update. Advertising SDKs initialize when the app launches,
+          including before an ad placement becomes eligible to appear.
         </p>
         <p>
           Ads are delivered through AppLovin MAX, which mediates demand from several advertising networks: AppLovin,
@@ -190,9 +213,9 @@
         <h2>Remote Configuration and Level Downloads</h2>
         <p>
           The app uses Firebase Remote Config to fetch settings such as which level catalog to use, how often new
-          fireworks unlock, and, once ads are live, ad settings. Fetching configuration sends the Firebase app instance
-          ID and basic app and device information to Google. If configuration cannot be fetched, the app falls back to
-          the values built into the release.
+          fireworks unlock, and the advertising settings described above. Fetching configuration sends installation
+          identifiers and basic app and device information to Google. If configuration cannot be fetched, the app uses
+          previously activated or built-in settings.
         </p>
         <p>
           When the configuration points to a newer level pack, the app downloads it from Google Cloud Storage and checks
@@ -205,8 +228,9 @@
         <h2>Your Choices</h2>
         <ul class="policy-list">
           <li>
-            <strong>Rewarded ads are optional.</strong> You choose whether to watch one. Interstitial and banner ads are
-            shown automatically and cannot currently be turned off in the game.
+            <strong>Rewarded ads are optional.</strong> You choose whether to request an ad for a reward, including any
+            configured substitute ad described above. Eligible interstitial and banner ads are shown automatically.
+            The game has no player-facing ad-disable setting or paid ad-removal option.
           </li>
           <li>
             <strong>Advertising ID controls.</strong> In Android Settings you can reset your Advertising ID, or delete it
@@ -245,8 +269,9 @@
       <article class="policy-section">
         <h2>No In-App Purchases</h2>
         <p>
-          Hanabi does not offer in-app purchases. Hints and brooms are earned in the game and cannot be bought.
-          The app does not use Google Play Billing and does not handle payment information.
+          Hanabi does not offer in-app purchases. Hints and brooms may be granted during their tutorials or obtained
+          through optional rewarded ads; they cannot be bought. The app does not use Google Play Billing and does not
+          handle payment information.
         </p>
       </article>
 
