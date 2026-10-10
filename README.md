@@ -28,7 +28,10 @@ In repository settings, enable GitHub Pages using `Deploy from a branch`, branch
 - Android marketing: `https://velvetrogue5.github.io/hanabi-site/android/marketing.html`
 - Support: `https://velvetrogue5.github.io/hanabi-site/support/`
 
-The game's `AIPivotLinks.cs` opens the privacy and terms URLs above from the first-launch notice and Settings.
+The game's `HanabiLinks.cs` currently opens `https://hanabi.colorpro.com.ai/hanabi/privacy.html` and
+`https://hanabi.colorpro.com.ai/hanabi/android/privacy.html` (with equivalent terms paths). The GitHub Pages URLs
+above are a separate copy; pushing this repository alone does not confirm that the production domain is updated.
+Publish these static files through that domain's hosting workflow and verify the October 10, 2026 date.
 
 ## Screenshots
 
@@ -40,19 +43,13 @@ build machine). iOS store sets still need to be captured.
 
 ## Current privacy posture
 
-The pages describe the build reviewed on September 22, 2026, with ads being integrated for release:
+The policies were updated on October 10, 2026 against Android release **1.0.3 / vc4** and the shared iOS integration source. Validate the final iOS archive before submission.
 
-- **No account, local saves** — progress, hints and brooms, unlocked fireworks, tutorials, and settings on device.
-  The app creates no identifier of its own.
-- **Advertising** — AppLovin MAX rewarded, interstitial, and banner ads. Android mediates AppLovin, Google AdMob,
-  Unity Ads, Vungle (Liftoff), Mintegral, Pangle, BidMachine, and Bigo Ads; the iOS list adds DT Exchange, but iOS
-  has no ad units yet, so ads are off there.
-- **Analytics** — Firebase Analytics, automatic events only (no custom gameplay events). No crash reporting.
-- **Remote configuration and levels** — Firebase Remote Config (`cloud_levels_enabled`, `level_pack`,
-  firework unlock pacing) and level packs from Google Cloud Storage.
-- **Install measurement** — AppsFlyer (plus the Play Install Referrer on Android) and Meta App Events.
-- **Tracking** — iOS shows the App Tracking Transparency prompt; AppsFlyer waits up to 60 seconds for the answer and
-  Meta advertiser-ID collection stays off until Allow. On Android the SDKs read the Advertising ID.
+- **No account, local saves** — progress, items, fireworks and settings stay on device. The app generates a persistent random CUID for Yideng reports and AppsFlyer's customer user ID; iOS stores a copy in the system keychain.
+- **Advertising** — AppLovin MAX, AdMob, Unity Ads, Liftoff, DT Exchange, Mintegral, Pangle, BidMachine and ironSource. Bigo has been removed. Banner is disabled by default both in the app and in live Remote Config version 6; it can be enabled remotely. iOS placements depend on its release configuration.
+- **Measurement** — Yideng reports installation, app opens, tutorial completion, ad format and estimated/cumulative revenue to `hanabi.colorpro.com.ai`. Reports include CUID and available SDK/advertising IDs and technical context. AppsFlyer and Meta also receive app-open and level-completion events; AppsFlyer receives MAX impression revenue and ad context.
+- **Firebase** — automatic Analytics events, Remote Config and Google Cloud Storage level downloads. There is no separate game crash-reporting service; advertising SDKs may process diagnostics.
+- **Choices** — IDFA requires iOS ATT permission; Android supports OS Advertising ID controls. Turning off an advertising ID does not disable all installation/event reporting or delete previous server records.
 - **Not present** — in-app purchases, notifications, accounts, cloud saves.
 
 Public support and privacy email: `velvet_rogue_5@proton.me`.

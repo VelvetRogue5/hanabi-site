@@ -120,7 +120,6 @@ const foreignClaims = [
   "Remove Ads",
   "local reminder notifications",
   "support identifier",
-  "keychain",
 ];
 for (const relativePath of pagePaths) {
   const html = read(relativePath);
@@ -145,3 +144,14 @@ for (const relativePath of pagePaths) {
 }
 
 console.log(`Validated ${pagePaths.length} pages.`);
+
+// The October 2026 integration creates its own CUID and reports custom attribution events.
+for (const path of ["privacy.html", "android/privacy.html"]) {
+  includes(path, "October 10, 2026");
+  includes(path, "Hanabi CUID");
+  includes(path, "Yideng (一灯) measurement");
+  includes(path, "cumulative revenue milestones");
+  includes(path, "Banner ads are disabled by default");
+  assert.ok(!read(path).includes("does not create its own player or device identifier"));
+  assert.ok(!read(path).includes("Bigo Ads"));
+}

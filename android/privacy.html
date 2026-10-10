@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="index,follow">
-  <meta name="description" content="Privacy Policy for Hanabi: Light Up the Sky on Android, covering on-device game saves, in-app advertising and the Advertising ID, Firebase analytics and remote configuration, and install measurement with AppsFlyer and Meta.">
+  <meta name="description" content="Privacy Policy for Hanabi: Light Up the Sky on Android, covering on-device game saves, in-app advertising and the Advertising ID, Firebase analytics and remote configuration, and install and event measurement with Yideng, AppsFlyer and Meta.">
   <meta name="theme-color" content="#151a4a">
   <title>Privacy Policy (Android) | Hanabi</title>
   <link rel="icon" href="../assets/app-icon.png">
@@ -33,11 +33,12 @@
         <h1>Hanabi for Android</h1>
         <p class="lead">
           This policy explains how Hanabi: Light Up the Sky ("Hanabi") handles information on Android. You do not need
-          an account, and your game progress is saved on your device. The app shows ads, uses Google Firebase for
-          analytics and remote configuration, and measures installs so we can understand how the game is found. It has
+          an account, and your game progress is saved on your device. The app includes advertising components, uses Google Firebase for
+          analytics and remote configuration, and reports installations and selected gameplay and advertising events
+          to Yideng, AppsFlyer, and Meta so we can understand how the game is found and used. It has
           no in-app purchases.
         </p>
-        <p class="updated">Last updated: October 8, 2026</p>
+        <p class="updated">Last updated: October 10, 2026</p>
         <div class="platform-switcher" aria-label="Choose a platform privacy policy">
           <span>Platform</span>
           <a href="../privacy.html">iOS</a>
@@ -91,10 +92,17 @@
           notice, and the level pack downloaded for your session.
         </p>
         <p>
-          Hanabi does not create its own player or device identifier. The services described below use identifiers
-          that Android or their own SDKs provide:
+          Hanabi creates a random app-generated identifier (CUID) and also uses identifiers provided by the operating
+          system and the services described below. These identifiers do not require an account or contain your name:
         </p>
         <ul class="policy-list">
+          <li>
+            <strong>Hanabi CUID.</strong> A persistent identifier generated from a random value, used to associate
+            installation and event reports with the same app instance. It is also provided to AppsFlyer as a customer
+            user ID. It is not a hardware serial number or a login credential. On Android it is stored in app-local
+            storage. Device backup and restore may preserve it when the app is reinstalled.
+          </li>
+
           <li>
             <strong>Android Advertising ID.</strong> A resettable identifier provided by Google Play services. The
             Firebase, AppLovin, AppsFlyer, and Meta SDKs in the app may read it for analytics, advertising, and
@@ -103,8 +111,8 @@
           </li>
           <li>
             <strong>Firebase, AppsFlyer, and Meta identifiers.</strong> Random identifiers created by the Google
-            Firebase, AppsFlyer, and Meta SDKs inside the app (an app instance ID, the AppsFlyer ID, and the Meta
-            anonymous ID). Each is used by its own service to recognize the same installation.
+            Firebase, AppsFlyer, and Meta SDKs inside the app (Firebase installation and app instance IDs, the AppsFlyer ID, and the Meta
+            anonymous ID). These can also be included in Yideng reports to associate measurement records with the same installation.
           </li>
         </ul>
         <p>
@@ -118,15 +126,15 @@
       <article class="policy-section">
         <h2>Analytics</h2>
         <p>
-          Hanabi includes Google Firebase Analytics. In the current version the app does not send its own gameplay
-          events; Firebase records the events it collects automatically, such as the first time the app is opened,
+          Hanabi includes Google Firebase Analytics. The Firebase integration records automatic events, such as the first time the app is opened,
           sessions and engagement time, app updates and removals, operating-system updates, and in-app ad impressions
           once ads are shown. These are tied to the Firebase app instance ID and, where available, the Advertising ID.
           Firebase may also use Android's privacy-preserving attribution and ad-topic interfaces where your device
-          supports them. If a future version adds gameplay events, this policy will be updated first.
+          supports them. Custom events sent to Yideng, AppsFlyer, and Meta are described below.
         </p>
         <p>
-          The app does not currently include a crash-reporting service.
+          The app does not include a separate game crash-reporting service. Bundled advertising SDKs may process
+          technical diagnostics, such as errors and crash or performance information, to operate their services.
         </p>
         <p>
           Google processes this data as our service provider under the
@@ -155,8 +163,9 @@
             completed nights, and cooldowns; an ad is not shown after every action or every night.
           </li>
           <li>
-            <strong>Banner ads.</strong> Banners may appear during gameplay after you reach the configured night.
-            Home-screen banners can also be enabled through remote configuration.
+            <strong>Banner ads.</strong> Banner ads are disabled by default in version 1.0.3 and in the current remote configuration.
+            If enabled remotely, banners may appear during gameplay after the configured night; home-screen banners
+            can also be enabled. Remote settings may change without an app update.
           </li>
         </ul>
         <p>
@@ -168,7 +177,7 @@
         </p>
         <p>
           Ads are delivered through AppLovin MAX, which mediates demand from several advertising networks: AppLovin,
-          Google AdMob, Unity Ads, Vungle (Liftoff), Mintegral, Pangle (ByteDance), BidMachine, and Bigo Ads. Some of these networks
+          Google AdMob, Unity Ads, Vungle (Liftoff), DT Exchange (Digital Turbine), Mintegral, Pangle (ByteDance), BidMachine, and ironSource (Unity LevelPlay). Some of these networks
           may not be enabled at a given time, but their software components ship with the app.
         </p>
         <p>
@@ -180,7 +189,7 @@
         </p>
         <p>
           Each advertising network handles the data it receives as an independent controller under its own privacy
-          policy, including <a href="https://www.applovin.com/privacy/" rel="noopener noreferrer">AppLovin</a> and
+          policy, including <a href="https://legal.applovin.com/privacy/" rel="noopener noreferrer">AppLovin</a> and
           <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" rel="noopener noreferrer">Unity</a>.
           AppLovin publishes the current list of its mediation and demand partners on its privacy page.
         </p>
@@ -189,20 +198,38 @@
       <article class="policy-section">
         <h2>Install Measurement and Attribution</h2>
         <p>
-          Hanabi uses two measurement services so that we can count installs, understand which advertising campaign
+          Hanabi uses Yideng, AppsFlyer, and Meta so that we can count installs, understand which advertising campaign
           or marketing channel a player came from, and measure advertising performance in aggregate.
         </p>
         <p>
-          <strong>AppsFlyer.</strong> The AppsFlyer SDK starts when the app launches. It receives the AppsFlyer ID, the
+          <strong>Yideng (一灯) measurement.</strong> Hanabi sends installation and selected event reports to our
+          Hanabi measurement endpoint at <code>hanabi.colorpro.com.ai</code>, integrated with Yideng. Reports include
+          the CUID; available Firebase installation and app instance IDs, AppsFlyer ID, and Meta anonymous ID;
+          the advertising identifier when available and permitted; app version, platform and distribution channel;
+          device model, screen size, operating-system version, language, region settings, and time zone. The server
+          also receives the IP address used for the request. Region settings are not precise location data.
+        </p>
+        <p>
+          The reported events are app opens, tutorial completion, and ad impressions. Ad reports contain the ad format
+          (rewarded, interstitial, or banner), currency, and estimated revenue, including cumulative revenue milestones.
+          These reports help measure acquisition and advertising performance and identify invalid reporting. They do
+          not include the full game save, your name, contacts, or support emails. Reports waiting for delivery are
+          stored locally and retried when a connection is available. Deleting or denying an advertising identifier
+          does not stop reports that use the app's CUID and other available installation identifiers.
+        </p>
+        <p>
+          <strong>AppsFlyer.</strong> The AppsFlyer SDK starts after the advertising SDK initializes. It receives the AppsFlyer ID, the
           Android Advertising ID where available, the install referrer from Google Play (and, on some devices, from the
           Samsung or Huawei app stores), which tells it which store link or campaign led to the install, IP address,
-          device and app information, app launches, and, once ads are shown, ad impression revenue. AppsFlyer matches
+          device and app information, the CUID, app launches and level-completion events, and, once ads are shown,
+          ad impression revenue with ad format, placement, network, and available creative and revenue-precision data. AppsFlyer matches
           this against ad campaigns to attribute the install, and processes the data as our service provider under the
           <a href="https://www.appsflyer.com/legal/services-privacy-policy/" rel="noopener noreferrer">AppsFlyer Services Privacy Policy</a>.
         </p>
         <p>
-          <strong>Meta (Facebook) App Events.</strong> The Meta SDK records app installs and activations, along with the
-          app events it logs automatically, so that we can measure installs from ads we run on Facebook and Instagram.
+          <strong>Meta (Facebook) App Events.</strong> The Meta SDK starts after the advertising SDK initializes and records
+          app activations, app-open and level-completion events, so that we can measure installs and engagement from
+          ads we run on Facebook and Instagram.
           It receives the Meta anonymous ID, the Android Advertising ID where available, device and app information,
           and IP address. The app does not use Facebook Login and does not access your Facebook account. Meta handles
           this data under the <a href="https://www.facebook.com/privacy/policy/" rel="noopener noreferrer">Meta Privacy Policy</a>.
@@ -229,7 +256,7 @@
         <ul class="policy-list">
           <li>
             <strong>Rewarded ads are optional.</strong> You choose whether to request an ad for a reward, including any
-            configured substitute ad described above. Eligible interstitial and banner ads are shown automatically.
+            configured substitute ad described above. Eligible interstitial ads and remotely enabled banners are shown automatically.
             The game has no player-facing ad-disable setting or paid ad-removal option.
           </li>
           <li>
@@ -310,7 +337,8 @@
           We do not sell or rent player personal information, and we do not share your game saves or support
           correspondence with advertisers. Data is shared only as described in this policy: with Google for analytics,
           remote configuration, and level downloads; with AppLovin and the mediated advertising networks to deliver and
-          measure ads; with AppsFlyer and Meta to count installs, attribute them to ad campaigns, and measure revenue;
+          measure ads; through our Yideng-integrated endpoint for installation, tutorial and advertising-event measurement;
+          with AppsFlyer and Meta for installation attribution and event measurement;
           when you choose to contact support; when required by law; or when necessary to protect rights, safety, and
           security.
         </p>
@@ -324,12 +352,20 @@
       <article class="policy-section">
         <h2>Retention and Deletion</h2>
         <p>
+          CUID and queued reports are stored on your device. Clearing app storage removes local queued reports and
+          the local CUID, but backups may restore identifiers and uninstalling does not erase server-side records.
+          Measurement records are retained by us and our service providers as needed for the purposes described in
+          this policy and applicable obligations. Contact us to request access, correction, or deletion of associated
+          records; removing an advertising identifier does not delete data previously reported.
+        </p>
+
+        <p>
           Local game data remains on your device until the app overwrites it, you clear the app's storage, or you
           uninstall the app. Hanabi does not provide cloud save, so clearing storage or uninstalling may permanently
           remove local progress.
         </p>
         <p>
-          Analytics and measurement data are retained by our providers only as long as needed for the purposes above,
+          Analytics and measurement data are retained by us and our providers only as long as needed for the purposes above,
           according to each provider's retention settings and applicable law, and are then deleted or aggregated so
           that they no longer identify a single installation.
         </p>
